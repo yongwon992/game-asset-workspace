@@ -1,17 +1,49 @@
-export function AssetSidebar() {
+import type { AssetItem } from "../../types/asset";
+
+interface AssetSidebarProps {
+  assets: AssetItem[];
+  selectedAssetId: string | null;
+  onSelectAsset: (asset: AssetItem) => void;
+}
+
+export function AssetSidebar({
+  assets,
+  selectedAssetId,
+  onSelectAsset,
+}: AssetSidebarProps) {
   return (
-    <aside className="workspace-panel asset-sidebar">
-      <div className="panel-header">
-        <h2>에셋 목록</h2>
-        <p>작업할 이미지 에셋을 관리합니다.</p>
-      </div>
+    <aside className="asset-sidebar">
+    <div className="asset-sidebar-header">
+      <h2>Assets</h2>
+      <span>{assets.length}</span>
+    </div>
 
-      <button className="upload-placeholder" type="button">
-        이미지 업로드
-      </button>
+      <div className="asset-list">
+        {assets.map((asset) => {
+          const isSelected = selectedAssetId === asset.id;
 
-      <div className="empty-message">
-        아직 등록된 이미지가 없습니다.
+          return (
+            <button
+              className={`asset-item ${isSelected ? "selected" : ""}`}
+              type="button"
+              key={asset.id}
+              onClick={() => onSelectAsset(asset)}
+            >
+              <img
+                className="asset-thumbnail"
+                src={asset.imageUrl}
+                alt={asset.name}
+              />
+
+              <div className="asset-item-info">
+                <strong>{asset.name}</strong>
+                <span>
+                  {asset.width} × {asset.height}
+                </span>
+              </div>
+            </button>
+          );
+        })}
       </div>
     </aside>
   );

@@ -1,17 +1,47 @@
-export function CanvasWorkspace() {
-  return (
-    <section className="canvas-section">
-      <header className="canvas-header">
-        <div>
-          <h1>Game Asset Workspace</h1>
-          <p>게임 이미지 에셋을 배치하고 편집하는 작업 공간입니다.</p>
-        </div>
-      </header>
+import type { AssetItem } from "../../types/asset";
 
-      <div className="canvas-placeholder">
+interface CanvasWorkspaceProps {
+  selectedAsset: AssetItem | null;
+}
+
+export function CanvasWorkspace({
+  selectedAsset,
+}: CanvasWorkspaceProps) {
+  return (
+    <section className="canvas-workspace">
+      <div className="canvas-toolbar">
         <div>
-          <strong>작업 영역</strong>
-          <p>업로드한 이미지가 이곳에 표시됩니다.</p>
+          <h2>Canvas</h2>
+
+          {selectedAsset && (
+            <span className="selected-asset-name">
+              {selectedAsset.name}
+            </span>
+          )}
+        </div>
+
+        <span className="zoom-label">100%</span>
+      </div>
+
+      <div className="canvas-area">
+        <div className="canvas-stage">
+          {selectedAsset ? (
+            <img
+              className="canvas-asset"
+              src={selectedAsset.imageUrl}
+              alt={selectedAsset.name}
+              style={{
+                left: selectedAsset.x,
+                top: selectedAsset.y,
+                width: selectedAsset.width,
+                height: selectedAsset.height,
+              }}
+            />
+          ) : (
+            <p className="canvas-empty-message">
+              왼쪽 목록에서 에셋을 선택해 주세요.
+            </p>
+          )}
         </div>
       </div>
     </section>

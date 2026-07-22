@@ -127,3 +127,243 @@
   margin-top: 12px;
   text-align: center;
 }
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  height: 64px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid #2f3542;
+  background-color: #171a21;
+}
+
+.app-header__title h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.app-header__title p {
+  margin: 4px 0 0;
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.workspace {
+  flex: 1;
+  min-height: 0;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #111318;
+  color: #f5f7fa;
+}
+
+.app-header {
+  height: 64px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid #2d323c;
+  background-color: #171a21;
+}
+
+.app-header__title h1 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.app-header__title p {
+  margin: 4px 0 0;
+  color: #969eac;
+  font-size: 12px;
+}
+
+.workspace {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr) 300px;
+}
+
+/* 왼쪽 에셋 목록 */
+
+.asset-sidebar {
+  padding: 16px;
+  overflow-y: auto;
+  border-right: 1px solid #2d323c;
+  background-color: #181b22;
+}
+
+.asset-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.asset-item {
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-color: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.asset-item:hover {
+  background-color: #242832;
+}
+
+.asset-item.selected {
+  border-color: #6c7cff;
+  background-color: #292e43;
+}
+
+.asset-thumbnail {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  object-fit: cover;
+  background-color: #303540;
+}
+
+.asset-item-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.asset-item-info strong {
+  overflow: hidden;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.asset-item-info span {
+  color: #929aa8;
+  font-size: 11px;
+}
+
+/* 중앙 캔버스 */
+
+.canvas-workspace {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #101217;
+}
+
+.canvas-toolbar {
+  min-height: 52px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #2d323c;
+  background-color: #191c23;
+}
+
+.canvas-toolbar > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.canvas-toolbar h2 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.selected-asset-name,
+.zoom-label {
+  color: #969eac;
+  font-size: 12px;
+}
+
+.canvas-area {
+  flex: 1;
+  min-height: 0;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+.canvas-stage {
+  position: relative;
+  width: 720px;
+  height: 520px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid #3a404b;
+  border-radius: 4px;
+  background-color: #242832;
+  background-image:
+    linear-gradient(45deg, #292e38 25%, transparent 25%),
+    linear-gradient(-45deg, #292e38 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #292e38 75%),
+    linear-gradient(-45deg, transparent 75%, #292e38 75%);
+  background-position:
+    0 0,
+    0 12px,
+    12px -12px,
+    -12px 0;
+  background-size: 24px 24px;
+}
+
+.canvas-asset {
+  position: absolute;
+  object-fit: contain;
+  user-select: none;
+}
+
+.canvas-empty-message {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  color: #8e96a3;
+  font-size: 14px;
+}
+
+.asset-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.asset-sidebar-header h2 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.asset-sidebar-header span {
+  padding: 2px 8px;
+  border-radius: 10px;
+  background-color: #292e38;
+  color: #aab1bd;
+  font-size: 12px;
+}
